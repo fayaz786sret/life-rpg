@@ -18,7 +18,7 @@ A gamified productivity app that turns everyday tasks into an RPG-style progress
 
 <div align="center">
 
-![Life RPG Project Preview](assets/life-rpg-preview.png)
+![Life RPG Project Preview](assets/life-rpg-dashboard.png)
 
 </div>
 
