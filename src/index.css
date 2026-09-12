@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ── Tailwind v4 theme tokens ─────────────────────────── */
+@theme {
+  /* Custom colours */
+  --color-primary-50:  #fef3e2;
+  --color-primary-100: #fde8c5;
+  --color-primary-200: #fbd08b;
+  --color-primary-300: #f9b851;
+  --color-primary-400: #f7a017;
+  --color-primary-500: #e08c0d;
+  --color-primary-600: #c47808;
+  --color-primary-700: #a66405;
+  --color-primary-800: #885002;
+  --color-primary-900: #6a3c00;
+
+  --color-dark-950: #0a0a0f;
+  --color-dark-900: #141420;
+  --color-dark-800: #1e1e2e;
+  --color-dark-700: #2a2a3e;
+  --color-dark-600: #363654;
+
+  /* Fonts */
+  --font-display: "Press Start 2P", cursive;
+  --font-body:    Inter, system-ui, sans-serif;
+
+  /* Animations */
+  --animate-float:    float    3s ease-in-out infinite;
+  --animate-glow:     glow     2s ease-in-out infinite;
+  --animate-level-up: levelUp  0.6s ease-out;
+  --animate-bounce-in:bounceIn 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
+
+  /* Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+  }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(240,180,80,0.5); }
+    50%       { box-shadow: 0 0 20px rgba(240,180,80,0.8); }
+  }
+  @keyframes levelUp {
+    0%   { transform: scale(0.5); opacity: 0; }
+    50%  { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1);   opacity: 1; }
+  }
+  @keyframes bounceIn {
+    0%   { transform: scale(0.3); opacity: 0; }
+    50%  { transform: scale(1.05); }
+    70%  { transform: scale(0.9);  }
+    100% { transform: scale(1);   opacity: 1; }
+  }
+  @keyframes shimmer {
+    0%   { background-position: -1000px 0; }
+    100% { background-position:  1000px 0; }
+  }
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  color: #f3f4f6;
+  background: linear-gradient(135deg, var(--color-dark-950), var(--color-dark-900), var(--color-dark-800));
+  transition: background 0.5s ease;
+}
+
+/* Theme Customizations */
+body[data-theme="sunrise"] {
+  background: linear-gradient(135deg, #2a0818, #4c1d24, #782a25);
+  --color-primary-400: #ff7b00;
+  --color-primary-500: #e65100;
+  --color-primary-600: #bf360c;
+}
+
+body[data-theme="cyberpunk"] {
+  background: linear-gradient(135deg, #050515, #0a1128, #001f3f);
+  --color-primary-400: #00f0ff;
+  --color-primary-500: #00b4d8;
+  --color-primary-600: #0077b6;
+}
+
+body[data-theme="retro"] {
+  background: linear-gradient(135deg, #0f172a, #1e1b4b, #311042);
+  --color-primary-400: #ec4899;
+  --color-primary-500: #d946ef;
+  --color-primary-600: #c026d3;
+}
+
+h1, h2, h3 { font-family: var(--font-display); }
+
+/* ── Reusable component classes ───────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  transition: transform 0.15s, background 0.2s, opacity 0.2s;
+}
+.btn-primary:hover  { background: linear-gradient(to right, var(--color-primary-600), var(--color-primary-700)); transform: scale(1.05); }
+.btn-primary:active { transform: scale(0.95); }
+.btn-primary:focus-visible { outline: 2px solid var(--color-primary-400); outline-offset: 3px; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background: var(--color-dark-700);
+  color: #e5e7eb;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+.btn-secondary:hover  { background: var(--color-dark-600); transform: scale(1.05); }
+.btn-secondary:active { transform: scale(0.95); }
+.btn-secondary:focus-visible { outline: 2px solid #9ca3af; outline-offset: 3px; }
+
+.card {
+  background: color-mix(in srgb, var(--color-dark-800) 80%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-dark-600);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.input-field {
+  width: 100%;
+  background: var(--color-dark-700);
+  border: 1px solid var(--color-dark-600);
+  border-radius: 0.5rem;
+  padding: 0.625rem 1rem;
+  color: #f3f4f6;
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+  transition: box-shadow 0.2s, border-color 0.2s;
+  outline: none;
+}
+.input-field::placeholder { color: #6b7280; }
+.input-field:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary-500) 25%, transparent);
+}
+
+.stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* ── Skeleton loader ───────────────────────────────────── */
+.skeleton {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, #1e1e2e 4%, #2a2a3e 25%, #1e1e2e 36%);
+  background-size: 1000px 100%;
+}
+
+/* ── Custom scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-dark-900); }
+::-webkit-scrollbar-thumb { background: var(--color-dark-600); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #4a4a6a; }
+
+/* ── Accessibility helper ─────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
