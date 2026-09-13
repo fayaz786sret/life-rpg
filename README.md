@@ -9,9 +9,9 @@ A gamified productivity app that turns everyday tasks into an RPG-style progress
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite)
 ![Tailwind](https://img.shields.io/badge/Tailwind-CSS-38BDF8?style=for-the-badge&logo=tailwindcss)
 ![Supabase](https://img.shields.io/badge/Supabase-Database%20%2B%20Auth-3ECF8E?style=for-the-badge&logo=supabase)
-![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-00C853?style=for-the-badge&logo=vercel)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-00C853?style=for-the-badge&logo=vercel)](https://life-rpg-nine-bice.vercel.app/)
 
-[Open Live Demo](https://web-project-fayaz-khan.vercel.app/) •
+[Open Live Demo](https://life-rpg-nine-bice.vercel.app/) •
 [View GitHub Repository](https://github.com/fayaz786sret/life-rpg)
 
 </div>
@@ -313,7 +313,7 @@ Then redeploy the application.
 ### Live Demo
 
 ```bash
-https://web-project-fayaz-khan.vercel.app/
+https://life-rpg-nine-bice.vercel.app/
 ```
 
 ---
