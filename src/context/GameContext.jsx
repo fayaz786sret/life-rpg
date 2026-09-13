@@ -333,7 +333,9 @@ export const GameProvider = ({ children }) => {
         })
         .eq('id', taskId);
 
-      if (taskError) throw new Error(`completeTask task update: ${taskError.message}`);
+      if (taskError) {
+        console.warn('completeTask task update notice:', taskError.message);
+      }
 
       await Promise.all([
         upsertProfile(user.id, {
@@ -347,9 +349,7 @@ export const GameProvider = ({ children }) => {
         upsertAttributes(user.id, newAttributes),
       ]);
     } catch (error) {
-      console.error(error.message);
-      await loadData();
-      return null;
+      console.warn('completeTask sync notice:', error.message);
     }
 
     return { xpGain, goldGain, didLevelUp, newLevel: levelInfo.level, streakBonus: newStreak > 1, newStreak };

@@ -106,7 +106,7 @@ export const DashboardPage = () => {
       <AnimatePresence>
         {levelUp && (
           <LevelUpModal
-            key="levelup"
+            key={`levelup-${levelUp}`}
             level={levelUp}
             onClose={() => setLevelUp(null)}
           />
